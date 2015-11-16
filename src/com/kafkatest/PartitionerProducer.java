@@ -18,9 +18,9 @@ public class PartitionerProducer {
 		Producer<String, String> producer = 
 				new Producer<String, String>(new ProducerConfig(props));
 	    String topic = "partition_test";
-	    for(int i=0; i<=10; i++) {
-	    	String k = i+"key-"+new Date();
-	    	String v = k + "--value" + i;
+	    for(int i=0; i<12; i++) {
+	    	String k = i+"";
+	    	String v = "key:"+k+"--value:" + new Date();
 	    	producer.send(new KeyedMessage<String, String>(topic,k,v));
 	    }
 	    producer.close();
